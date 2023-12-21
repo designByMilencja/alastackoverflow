@@ -17,12 +17,41 @@ import LocalSearch from "@/components/shared/search/LocalSearch"
 import Filter from "@/components/shared/Filter"
 import { HomePageFilters } from "@/constants/filters"
 import HomeFilters from "@/components/home/HomeFilters"
+import NoResult from "@/components/shared/NoResult"
 // import { auth } from "@clerk/nextjs";
 
 export const metadata: Metadata = {
   title: "Home | Dev Overflow",
   description: "Dev Overflow is a community for developers to share their knowledge and experience.",
 }
+const questions = [
+  {
+    _id: 1,
+    title: "How to use css?",
+    tags: [
+      { _id: 1, name: "css" },
+      { _id: 2, name: "html" },
+    ],
+    author: "Jogn Doe",
+    upvotes: 10,
+    views: 140,
+    answers: 1,
+    createdAt: "2023-12-21",
+  },
+  {
+    _id: 2,
+    title: "How to use another styles?",
+    tags: [
+      { _id: 1, name: "tailwind" },
+      { _id: 2, name: "next" },
+    ],
+    author: "Jogn Doe",
+    upvotes: 10,
+    views: 140,
+    answers: 1,
+    createdAt: "2023-12-21",
+  },
+]
 export default async function Home({ searchParams }: SearchParamsProps) {
   // const { userId } = auth();
   // let result;
@@ -66,8 +95,18 @@ export default async function Home({ searchParams }: SearchParamsProps) {
         <Filter filters={HomePageFilters} otherClasses="min-h-[56px] sm:min-w-[170px]" containerClasses="hidden max-md:flex" />
       </div>
       <HomeFilters />
-      {/* <div className="mt-10 flex w-full flex-col gap-6">
-        {result.questions.length > 0 ? (
+      <div className="mt-10 flex w-full flex-col gap-6">
+        {questions.length > 4 ?  questions.map((question) => question.title) : (
+          <NoResult
+            title="There's no question to show"
+            description="Be the first to break the silence! 🚀 Ask a Question and kickstart the
+        discussion. Our query could be the next big thing others learn from. Get
+        involved! 💡"
+            link={"/ask-questions"}
+            linkTitle="Ask a Question"
+          />
+        ) }
+        {/* {result.questions.length > 0 ? (
           result.questions.map((question) => (
             <QuestionCard
               key={question._id}
@@ -90,8 +129,8 @@ export default async function Home({ searchParams }: SearchParamsProps) {
             link={"/ask-questions"}
             linkTitle="Ask a Question"
           />
-        )}
-      </div> */}
+        )} */}
+      </div>
       {/* <div className="mt-10">
         <Pagination
           pageNumber={searchParams?.page ? +searchParams.page : 1}
