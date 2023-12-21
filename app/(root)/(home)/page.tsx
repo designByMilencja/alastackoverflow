@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
 // import LocalSearchbar from "@/components/shared/search/LocalSearchbar";
 // import Filter from "@/components/shared/Filter";
 // import { HomePageFilters } from "@/constants/filters";
@@ -10,19 +10,19 @@ import { Button } from "@/components/ui/button";
 //   getQuestions,
 //   getRecommendedQuestions,
 // } from "@/lib/actions/question.action";
-import { SearchParamsProps } from "@/types";
+import { SearchParamsProps } from "@/types"
 // import Pagination from "@/components/shared/Pagination";
-import type { Metadata } from "next";
-import LocalSearch from "@/components/shared/search/LocalSearch";
-import Filter from "@/components/shared/Filter";
-import { HomePageFilters } from "@/constants/filters";
+import type { Metadata } from "next"
+import LocalSearch from "@/components/shared/search/LocalSearch"
+import Filter from "@/components/shared/Filter"
+import { HomePageFilters } from "@/constants/filters"
+import HomeFilters from "@/components/home/HomeFilters"
 // import { auth } from "@clerk/nextjs";
 
 export const metadata: Metadata = {
   title: "Home | Dev Overflow",
-  description:
-    "Dev Overflow is a community for developers to share their knowledge and experience.",
-};
+  description: "Dev Overflow is a community for developers to share their knowledge and experience.",
+}
 export default async function Home({ searchParams }: SearchParamsProps) {
   // const { userId } = auth();
   // let result;
@@ -62,20 +62,10 @@ export default async function Home({ searchParams }: SearchParamsProps) {
         </Link>
       </div>
       <div className="mt-11 flex justify-between gap-5 max-sm:flex-col sm:items-center">
-        <LocalSearch
-          route="/"
-          iconPosition="left"
-          imgSrc="/assets/icons/search.svg"
-          placeholder="Search for questions"
-          otherClasses="flex-1"
-        />
-        <Filter
-          filters={HomePageFilters}
-          otherClasses="min-h-[56px] sm:min-w-[170px]"
-          containerClasses="hidden max-md:flex"
-        />
+        <LocalSearch route="/" iconPosition="left" imgSrc="/assets/icons/search.svg" placeholder="Search for questions" otherClasses="flex-1" />
+        <Filter filters={HomePageFilters} otherClasses="min-h-[56px] sm:min-w-[170px]" containerClasses="hidden max-md:flex" />
       </div>
-      {/* <HomeFilters /> */}
+      <HomeFilters />
       {/* <div className="mt-10 flex w-full flex-col gap-6">
         {result.questions.length > 0 ? (
           result.questions.map((question) => (
@@ -109,5 +99,5 @@ export default async function Home({ searchParams }: SearchParamsProps) {
         />
       </div> */}
     </>
-  );
+  )
 }
