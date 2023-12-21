@@ -8,7 +8,7 @@ import { useState } from "react";
 const HomeFilters = () => {
 //   const searchParams = useSearchParams();
 //   const router = useRouter();
-  const [active, setActive] = useState<string>("");
+  // const [active, setActive] = useState<string>("");
 
 //   const handleTypeClick = (item: string) => {
 //     if (active === item) {
@@ -29,7 +29,7 @@ const HomeFilters = () => {
 //       router.push(newUrl, { scroll: false });
 //     }
 //   };
-
+const active = 'newest'
   return (
     <div className="mt-10 hidden flex-wrap gap-3 md:flex">
       {HomePageFilters.map((item) => (
